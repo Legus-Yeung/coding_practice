@@ -1,0 +1,21 @@
+#
+# Complete the 'maximumPerimeterTriangle' function below.
+#
+# The function is expected to return an INTEGER_ARRAY.
+# The function accepts INTEGER_ARRAY sticks as parameter.
+#
+
+def maximumPerimeterTriangle(sticks):
+    # Write your code here
+    def nonDegen(a, b, c):  #function to check if its non-degenerate triangle
+        if a < b + c and b < c + a and c < a + b:
+            return True
+        else:
+            return False
+    
+    sticks = sorted(sticks, reverse = True) #descending order
+    
+    for ele in range (0, len(sticks) - 2):  #since this is iterating in descending order
+        if nonDegen(sticks[ele], sticks[ele+1], sticks[ele+2]):
+            return [sticks[ele+2], sticks[ele+1], sticks[ele]] #return whenever the first time this is true
+    return [-1] #return int[]

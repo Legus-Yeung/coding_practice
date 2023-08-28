@@ -1,0 +1,13 @@
+#
+# Complete the 'migratoryBirds' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts INTEGER_ARRAY arr as parameter.
+#
+
+def migratoryBirds(arr):
+    # Write your code here
+    birdCount = [0] * 6  #since id starts from 1 to 5, but list starts from 0
+    for bird in arr:
+        birdCount[bird] += 1
+    return birdCount.index(max(birdCount)) #this return the first occurrance of the max element

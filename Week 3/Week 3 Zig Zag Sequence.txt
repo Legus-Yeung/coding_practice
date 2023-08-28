@@ -1,0 +1,13 @@
+def findZigZagSequence(a, n):
+    a.sort()
+    mid = int((n - 1)/2)    #edited from n + 1 to n - 1
+    a[mid], a[n-1] = a[n-1], a[mid]
+
+    st = mid + 1
+    ed = n - 2      #edited from n - 1 to n - 2
+    while(st <= ed):        #this while loop is working on swapping the second half, since the array is already sorted
+        a[st], a[ed] = a[ed], a[st]
+        st = st + 1
+        ed = ed - 1     #edited from ed + 1 to ed - 1
+
+NOTE: RUN IT WITHOUT COMMENT TO PASS
