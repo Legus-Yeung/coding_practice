@@ -1,0 +1,10 @@
+def towerBreakers(n, m):
+    # Write your code here
+    winner = 0
+    if m == 1:              #no moves for player 1
+        winner = 2
+    elif n % 2 == 0:        #even number of towers, player 2 can always repeat the move of player 1
+        winner = 2
+    else:                   #uneven number of towers, player 1 wins
+        winner = 1
+    return winner

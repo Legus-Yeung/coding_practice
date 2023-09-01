@@ -1,0 +1,24 @@
+def separateNumbers(s):    
+    printed = False     #created a flag to prevent redundant prints since function returns nothing
+    if len(s)==1:
+        printed = True
+        print("NO")
+
+    for i in range(1, len(s)//2+1):
+        genstr = s[:i]
+        prev = int(genstr) 
+ 
+        while len(genstr) < len(s):
+            nxt = prev+1
+            genstr += str(nxt)
+            prev = nxt
+
+        if genstr == s:
+            printed = True
+            print("YES " + s[:i])
+
+    if printed == False:
+        print("NO")
+        
+        #idea from https://shounaklohokare.medium.com/separate-the-numbers-hackerrank-solution-in-python-4586f6ac9707
+        #code fixed by Legus, since it couldn't pass anything unless fixed

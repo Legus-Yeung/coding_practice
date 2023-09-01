@@ -1,0 +1,14 @@
+def caesarCipher(s, k):
+    # Write your code here
+    list = []
+    
+    for char in s:
+        list.append(ord(char))     #get corresponding ascii value and store in list
+
+    for i in range(n):
+        if 65 <= list[i] <= 90:     
+            list[i] = 65 + (list[i] - 65 + k) % 26  #the latter is to make sure its within the range of 65 to 90 for uppercase
+        elif 97 <= list[i] <= 122:
+            list[i] = 97 + (list[i] - 97 + k) % 26
+    
+    return "".join(map(chr, list))      #return the corresponding letter from ascii value

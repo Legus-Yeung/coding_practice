@@ -1,0 +1,13 @@
+def closestNumbers(arr):
+    # Write your code here
+    pairArr = []
+    arr = sorted(arr)
+    freqArr = []    #array that describes the difference between elements
+    for i in range (1, int(len(arr))):
+        freqArr.insert(i-1, arr[i]-arr[i-1])    #inserting the difference
+    minDiff = min(freqArr)      #find minimum difference
+    for i in range (0 , int(len(freqArr))):
+        if freqArr[i] == minDiff:       #when in smallest difference
+            pairArr.append(arr[i])      #append the pairs of elements from original array
+            pairArr.append(arr[i+1])
+    return pairArr

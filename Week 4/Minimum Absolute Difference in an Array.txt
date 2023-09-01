@@ -1,0 +1,7 @@
+def minimumAbsoluteDifference(arr):
+    # Write your code here
+    arr = sorted(arr)       #sort the array in ascending order
+    diffArr = []            #create an array to store absolute difference
+    for i in range (1, int(len(arr))):
+        diffArr.append(abs(arr[i] - arr[i-1]))      #add each absolute difference between elements to the diffArr
+    return min(diffArr)     #return the minimum element

@@ -1,0 +1,19 @@
+def pickingNumbers(a):
+    # Write your code here
+    if int(len(a)) == 0:
+        return 0
+    a = sorted(a)
+    holding = a[0]  #object being used to count
+    currCount = 1
+    maxCount = 1
+    for i in range (1, int(len(a))):
+        if a[i] - holding == 0 or a[i] - holding == 1:
+            currCount += 1
+        else:
+            holding = a[i]
+            if currCount > maxCount:
+                maxCount = currCount
+            currCount = 1
+    if currCount > maxCount:    #corner case where else statement above is never run
+        maxCount = currCount
+    return maxCount

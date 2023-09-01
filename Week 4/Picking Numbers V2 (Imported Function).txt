@@ -1,0 +1,8 @@
+from collections import Counter
+
+def pickingNumbers(a):
+    freq = Counter(a)   #this creates a frequency container
+    count = 0
+    for i in range(1, 100): #max size of int array a
+        count = max(count, freq[i] + freq[i+1]) #freq[i] + freq[i+1] is an subarray where the absolute difference between any two elements is at most 1
+    return count

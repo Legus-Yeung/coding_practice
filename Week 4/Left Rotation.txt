@@ -1,0 +1,12 @@
+def rotateLeft(d, arr):
+    # Write your code here
+    if d == 0 or d == int(len(arr)):    #base cases
+        return arr
+    rotated = []
+    hold = []
+    for i in range (0, int(len(arr))):  #i starts at 0, for i in arr makes i start at 1
+        if i < d:
+            hold.insert(i, arr[i])
+        else:
+            rotated.insert(i, arr[i])
+    return rotated + hold   #the question is simply dissecting an array given a position and joining them
