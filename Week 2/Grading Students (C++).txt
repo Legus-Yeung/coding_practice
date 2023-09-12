@@ -1,0 +1,17 @@
+vector<int> gradingStudents(vector<int> grades) {
+    vector<int> rounded;
+    for (int i = 0; i < grades.size(); i++) {
+        if (grades[i] < 38) {
+            rounded.push_back(grades[i]);
+            continue;
+        }
+        if (grades[i]%5 < 3) {
+            rounded.push_back(grades[i]);
+            continue;
+        } else {
+            rounded.push_back(grades[i] + 5 - grades[i]%5);
+            continue;
+        }
+    }
+    return rounded;
+}

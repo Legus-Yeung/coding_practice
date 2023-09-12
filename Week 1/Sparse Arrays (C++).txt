@@ -1,0 +1,15 @@
+vector<int> matchingStrings(vector<string> strings, vector<string> queries) {
+    vector<int> output;
+    int strlen = strings.size();
+    int quelen = queries.size();
+    for (int i = 0; i < quelen; i++){
+        int count = 0;
+        for (int j = 0; j < strlen; j++) {
+            if (queries[i] == strings[j]) {
+                count +=1;
+            }
+        }
+        output.push_back(count);
+    }
+    return output;
+}

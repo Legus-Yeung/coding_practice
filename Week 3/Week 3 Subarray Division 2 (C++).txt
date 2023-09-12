@@ -1,0 +1,27 @@
+int birthday(vector<int> s, int d, int m) {
+    if (s.size() < m) {
+        return 0;
+    }
+    
+    int sumCount = 0; //keep count of d
+    int segCount = 0; //keep count of m
+    int divCount = 0; //output value = number of ways to the bar can be divided
+    
+    for (int i = 0; i < s.size(); i ++) {
+        sumCount += s[i]; //sumCount holds current sum of elements
+        segCount += 1; //segCount holds current count of elements
+        
+        if (sumCount == d && segCount == m) { //if both matches, we found one way to divide bar
+            divCount += 1;  //way += 1
+            sumCount = sumCount - s[i-segCount + 1]; 
+            //sumCount removes the first element that makes up the sum
+            segCount -= 1;
+        }
+        
+        if (segCount == m && sumCount != d) { //reaching required segment count but sum isn't equal
+            sumCount = sumCount - s[i-segCount + 1]; //sumCount removes the first element that makes up the sum
+            segCount -= 1;
+        }
+    }
+    return divCount;
+}

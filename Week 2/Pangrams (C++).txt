@@ -1,0 +1,19 @@
+string pangrams(string s) {
+    string w;
+    set<char> set;
+    for (auto ch : s) { //for every element called ch in s, auto means automatically infer its type
+        if (ch >= 'a' && ch <= 'z') {
+            set.insert(ch);  //note that a set will not contain duplicate elements
+        }
+        if (ch >= 'A' && ch <= 'Z') {
+            ch = tolower(ch);
+            set.insert(ch);
+        }
+    }
+    if (set.size() == 26) {
+        w = "pangram";
+    } else {
+        w = "not pangram";
+    }
+    return w;
+}

@@ -1,0 +1,15 @@
+void miniMaxSum(vector<int> arr) {
+    long int min=0 , max=0;
+    int length = arr.size();
+    // Sort the vector
+    sort(arr.begin() , arr.end());
+    // Calculate the min
+    for(int i =0; i< 4; i++)
+    {
+        min +=arr[i];
+    }
+    // Calculate the max
+    for(int i= length-1; i >= length-4; i--)
+        max += arr[i];
+    cout<< min << " "<< max;
+        }

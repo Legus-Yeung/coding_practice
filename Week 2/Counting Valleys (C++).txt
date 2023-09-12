@@ -1,0 +1,26 @@
+int countingValleys(int steps, string path) {
+    bool UD;
+    int tracker = 0;
+    int count = 0;
+    if (path[0] == 'D') {
+        UD = 0;
+    } else {
+        UD = 1;
+    }
+    for (int i = 0; i < steps; i++) {
+        if (path[i] == 'D') {
+            tracker -= 1;
+        }
+        if (path[i] == 'U') {
+            tracker += 1;
+        }
+        if (tracker == 0 && UD == 0) {
+            UD = 1;
+            count += 1;
+        }
+        if (tracker == -1 && UD == 1) {
+            UD = 0;
+        }
+    }
+    return count;
+}

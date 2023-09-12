@@ -1,0 +1,12 @@
+def anagram(s):
+    # Write your code here
+    if int(len(s)) % 2 != 0:
+        return -1
+    else:
+        s1 = s[:int(len(s)/2)]
+        s2 = s[int(len(s)/2):]
+        unique = list(set(s2))
+        count = 0
+        for c in unique:
+            count += max(s2.count(c) - s1.count(c), 0)
+        return count

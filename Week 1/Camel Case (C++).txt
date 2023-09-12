@@ -1,0 +1,59 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+string split(string str) {
+    string response;
+    
+    for(auto &i: str) {
+        if( isupper(i) ) response += ' ';
+        response += i;
+    }
+    transform(response.begin(), response.end(), response.begin(), ::tolower);
+    
+    // trim out the additional space from the front in case of Class
+    if (response[0] == ' ')
+        response = response.substr(1, response.length() - 1);
+    return response;
+}
+
+string combine(string str, bool flag) {
+    string response;
+    for(auto &i: str) {
+        if (flag) {
+            response += i-32;
+            flag = false;            
+        }
+        else if (i == ' ')   flag = true;
+        else    response += i;
+    }
+    return response;
+}
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+    
+    string inp;
+    while (getline(cin, inp)) {
+        string str;
+                // taken from the many comments posted here
+        for(auto &i: inp) {
+            if(i == '\r' || i == '\t' || i == '\n')  continue;
+            str += i;
+        }
+        if (str[0] == 'S') {
+            if (str[2] == 'M') cout << split(str.substr(4, str.length() - 4 - 2)) << endl;
+            else if (str[2] == 'V') cout << split(str.substr(4, str.length() - 4)) << endl;
+            else cout << split(str.substr(4, str.length() - 4)) << endl;
+        }
+        else {
+            if (str[2] == 'M') cout << combine(str.substr(4, str.length() - 4), false) + "()" << endl;
+            else if (str[2] == 'V') cout << combine(str.substr(4, str.length() - 4), false) << endl;
+            else cout << combine(str.substr(4, str.length() - 4), true) << endl;
+        }
+    }
+    return 0;
+}
