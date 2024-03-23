@@ -1,0 +1,16 @@
+def dynamicArray(n, queries):
+    # Write your code here
+    seq = [[] for _ in range(n)]
+    lastanswer = 0
+    result = []
+    
+    for q,x,y in queries:
+        if q == 1:
+            idx = (x ^ lastanswer) % n      #set up according to problem statement
+            seq[idx].append(y)
+        else:
+            idx = (x ^ lastanswer) % n      #set up according to problem statement
+            v = y % len(seq[idx])           #assignment divided in two parts
+            lastanswer = seq[idx][v]
+            result.append(lastanswer)
+    return result

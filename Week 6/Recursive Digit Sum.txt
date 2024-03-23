@@ -1,0 +1,11 @@
+def superDigit(n, k):
+    # write your code here
+    digits = map(int, list(n))
+    return getSuperDigit(str(sum(digits) * k))
+
+def getSuperDigit(p):
+    if len(p) == 1:  # if sum of digits down to a single digit
+        return int(p)
+    else:   # recursive call to add all numbers and get sum of digits
+        digits = map(int, list(p))
+        return getSuperDigit(str(sum(digits)))

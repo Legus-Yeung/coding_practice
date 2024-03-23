@@ -1,0 +1,8 @@
+def maxMin(k, arr):
+    # Write your code here
+    arr = sorted(arr)
+    minimum = max(arr) - min(arr)
+    for i in range (0, int(len(arr)) - k + 1):
+        minimum = min(minimum, arr[i + k - 1] - arr[i])
+    return minimum
+    #tough part was figuring out the index range, both in the for loop condition and inside the for loop

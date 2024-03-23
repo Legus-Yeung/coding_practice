@@ -1,0 +1,14 @@
+def gamingArray(arr):
+    # Write your code here
+    count = 0
+    currMax = arr[0]
+    for i in range(len(arr)):
+        if currMax < arr[i]:
+            currMax = arr[i]
+            count += 1
+    if count % 2 == 0:
+        return "BOB"
+    else:
+        return "ANDY"
+    # starting from the left, whenever there is an element larger than currMax, count increment by 1
+    # working through the question backwards, since every essential move is triggered when there is a larger element

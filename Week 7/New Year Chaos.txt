@@ -1,0 +1,11 @@
+def minimumBribes(q):
+    count = 0
+    for i, o in enumerate(q):
+        curr = i + 1
+        if o - curr > 2:
+            print("Too chaotic")
+            return
+        for j in q[max(o - 2, 0):i]:
+            if j > o:
+                count += 1
+    print(count)

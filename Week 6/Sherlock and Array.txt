@@ -1,0 +1,12 @@
+def balancedSums(arr):
+    # Write your code here
+    totalSum = 0
+    runningSum = 0
+    for i in range(len(arr)):
+        totalSum += arr[i]
+    for i in range(len(arr)):
+        totalSum -= arr[i]
+        if totalSum == runningSum:
+            return "YES"
+        runningSum += arr[i]
+    return "NO"
