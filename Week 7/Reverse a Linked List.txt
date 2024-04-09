@@ -1,0 +1,10 @@
+def reverse(llist):
+    # Write your code here
+    prev = None
+    current = llist                     # This is the head
+    while current:                      # While current is not null
+        next_node = current.next        # set next_node to what's currently pointing next
+        current.next = prev             # set current node to point to prev
+        prev = current                  # after so, change prev to the current node
+        current = next_node             # move current node to next node
+    return prev                         # return the reversed linked list
