@@ -1,0 +1,13 @@
+def climbingLeaderboard(ranked, player):
+    # Write your code here
+    ranked = list(set(ranked))                 # remove duplicates
+    ranked.sort()                              # sorted in ascending order
+    i = 0
+    n = len(ranked)
+    playerRank = []
+    
+    for score in player:
+        while i < n and score >= ranked[i]:    # if current score is greater or equal to currently looped rank i
+            i += 1
+        playerRank.append(n - i + 1)           # by default the rank starts from last and increment with i above
+    return playerRank
