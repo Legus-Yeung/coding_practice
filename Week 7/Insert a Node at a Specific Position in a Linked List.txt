@@ -1,0 +1,16 @@
+def insertNodeAtPosition(llist, data, position):
+    # Write your code here
+    node = SinglyLinkedListNode(data)
+    
+    if llist == None:                   # If empty list
+        llist = node
+    else:
+        temp = llist                    # Create a temporary pointer
+        i = 1                           # Since list is not empty, starts from position 1
+        while temp != None and i < position:    # First condition for cases of reaching end of linked list
+            temp = temp.next
+            i += 1
+        node.next = temp.next
+        temp.next = node
+        
+    return llist

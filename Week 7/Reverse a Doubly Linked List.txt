@@ -1,0 +1,11 @@
+def reverse(llist):
+    # Write your code here
+    prev = None
+    current = llist
+    while current:
+        next_node = current.next
+        current.next = prev
+        current.prev = next_node        # only difference is this
+        prev = current
+        current = next_node
+    return prev
