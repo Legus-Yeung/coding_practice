@@ -1,0 +1,19 @@
+def mergeLists(head1, head2):
+    mergedList = SinglyLinkedList()     # initialize a new empty singlyLinkedList
+    current = mergedList                # create an additional pointer to be used
+    
+    while head1 is not None and head2 is not None:
+        if head1.data < head2.data:     # if head1's data is smaller, it becomes the next node
+            current.next = head1
+            head1 = head1.next
+        else:                           # case if head2's data is smaller or equal to head2
+            current.next = head2
+            head2 = head2.next
+        current = current.next          # iterate
+        
+    if head1 is not None:               # edge case for if either head1 or head2 is an empty list
+        current.next = head1            # return the other list
+    elif head2 is not None:
+        current.next = head2
+        
+    return mergedList.next              # initially initialized first node as null so it needs to be next
