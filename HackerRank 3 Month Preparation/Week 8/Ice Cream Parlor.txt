@@ -1,0 +1,8 @@
+def icecreamParlor(m, arr):
+    # Write your code here
+    dict = {}                                 # use dictionary
+    for i in range(len(arr)):
+        if m-arr[i] in dict:                 # target value minus current cost in index
+            return [dict[m-arr[i]], i+1]     # return [matched index, current index], i+1 to convert to 1-based indexing
+        else:
+            dict[arr[i]] = i+1               # if no match, add element to dictionary

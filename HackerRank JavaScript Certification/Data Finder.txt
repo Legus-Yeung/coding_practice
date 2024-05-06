@@ -1,0 +1,14 @@
+function dataFinder(data) {
+    console.log(data);
+    return function find(minRange, maxRange, value) {
+            if (maxRange > data.length - 1) {
+        throw new Error("Invalid range");
+    }
+    for (let i = minRange; i <= maxRange; i++) {
+        if (data[i] == value) {
+            return true;
+        }
+    }
+    return false;
+    }
+}
