@@ -1,0 +1,5 @@
+def bigSorting(unsorted):
+    # Write your code here
+    sys.set_int_max_str_digits(1000000)
+    unsorted.sort(key=int)
+    return unsorted
