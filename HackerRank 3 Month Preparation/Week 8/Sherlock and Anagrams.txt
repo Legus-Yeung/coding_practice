@@ -1,0 +1,29 @@
+def sherlockAndAnagrams(s):
+    # Write your code here
+    substr_count = {}
+    strlen = len(s)
+    
+    for i in range(strlen):
+        char_freq = [0] * 26  # for each letter in the alphabet
+        
+        # for every substring starting at i, expand it and count frequencies
+        for j in range(i, strlen):
+            # update the frequency of the current character
+            char_freq[ord(s[j]) - ord('a')] += 1
+            
+            # convert the frequency array into a tuple (hashable) and use it as a key
+            substr_key = tuple(char_freq)
+            
+            # if the key doesn't exist in the dictionary, add it with an initial value of 0
+            if substr_key in substr_count:
+                substr_count[substr_key] += 1
+            else:
+                substr_count[substr_key] = 1
+
+    # count how many pairs of substrings have the same frequency signature
+    anagrams = 0
+    for count in substr_count.values():
+        # if a substring pattern occurs 'count' times, the number of ways to pick 2 out of 'count' is count * (count - 1) / 2
+        anagrams += count * (count - 1) // 2
+    
+    return anagrams

@@ -1,0 +1,17 @@
+def isBalanced(s):
+    # Write your code here
+    if len(s) % 2 != 0:
+        return 'NO'
+    bracket_map = {')': '(', '}': '{', ']': '['}
+    stack = []
+    for char in s:
+        if char in bracket_map.values():
+            stack.append(char)
+        elif char in bracket_map:
+            if stack and stack[-1] == bracket_map[char]:
+                # If it's a closing bracket, check if the most recent opening bracket matches
+                stack.pop()
+            else:
+                # If its not a match, its not balanced
+                return 'NO'
+    return 'YES' if not stack else 'NO'

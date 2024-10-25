@@ -1,0 +1,32 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+class Queue(object):
+    def __init__(self):
+        self.q1 = []
+        self.q2 = []
+        
+    def put(self, value):
+        self.q1.append(value)
+        
+    def pop(self):
+        if not self.q2:
+            while self.q1:
+                self.q2.append(self.q1.pop())
+        return self.q2.pop()
+    
+    def show(self):
+        if not self.q2:
+            while self.q1:
+                self.q2.append(self.q1.pop())
+        return self.q2[-1]
+
+queue = Queue()
+loopVar = int(input())
+
+for i in range(loopVar):
+    values = list(map(int, input().split()))
+    if values[0] == 1:
+        queue.put(values[1])
+    elif values[0] == 2:
+        queue.pop()
+    else:
+        print(queue.show())
