@@ -1,0 +1,16 @@
+def equalStacks(h1, h2, h3):
+    # Write your code here
+    height1, height2, height3 = sum(h1), sum(h2), sum(h3)   # initialize heights of each stack
+    
+    while h1 and h2 and h3:
+        if height1 == height2 == height3:   # if all heights are equal then return one of them
+            return height1
+        
+        if height1 >= height2 and height1 >= height3:   # pop the stack of the tallest and check again in this while loop
+            height1 -= h1.pop(0)
+        elif height2 >= height1 and height2 >= height3:
+            height2 -= h2.pop(0)
+        else:
+            height3 -= h3.pop(0)
+    
+    return 0        # if any stack is empty then it cannot be equalized
