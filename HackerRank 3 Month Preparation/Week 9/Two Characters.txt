@@ -1,0 +1,13 @@
+def alternate(s):
+    # Write your code here
+    unique_chars = set(s)
+    max_length = 0
+
+    for char1 in unique_chars:  # generate all possible pairs
+        for char2 in unique_chars:
+            if char1 != char2:
+                filtered = [c for c in s if c == char1 or c == char2]   # create a string with only char1 and char2
+                if all(filtered[i] != filtered[i+1] for i in range(len(filtered) - 1)):     # check if the filtered string alternates
+                    max_length = max(max_length, len(filtered))
+
+    return max_length if max_length > 1 else 0
