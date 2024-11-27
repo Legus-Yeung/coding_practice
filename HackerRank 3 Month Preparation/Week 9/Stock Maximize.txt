@@ -1,0 +1,8 @@
+def stockmax(prices):
+    # Write your code here
+    maxProfit = 0
+    profit = 0
+    for i in reversed(prices):  # trick is to read the list backwards
+        maxProfit = max(maxProfit, i)
+        profit += maxProfit - i
+    return profit
