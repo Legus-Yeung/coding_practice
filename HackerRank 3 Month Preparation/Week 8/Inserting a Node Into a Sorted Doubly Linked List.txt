@@ -1,0 +1,26 @@
+def sortedInsert(llist, data):
+    # Write your code here
+    newNode = DoublyLinkedListNode(data)
+    current = llist
+    nextNode = llist.next
+    i = 0
+    while i==0:
+        if (llist.data >= data):
+            llist.prev = newNode
+            newNode.next = llist
+            llist = newNode
+            return llist
+        if (current.next is None):
+            current.next = newNode
+            newNode.prev = current
+            return llist
+        if (current.data <= data) & (nextNode.data >= data):
+            current.next = newNode
+            newNode.next = nextNode
+            nextNode.prev = newNode
+            newNode.prev = current
+            i = 1
+        else:
+            current = current.next
+            nextNode = nextNode.next
+    return llist
