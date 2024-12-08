@@ -1,0 +1,25 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+numCases = int(input())
+
+listOfStrings = []                      # store operated strings as a list
+string = ''                             # initialize with an empty string
+listOfStrings.append(string)            # initialize list with an empty string
+for _ in range(numCases):
+    query = list(input().split())       # split each query into query[0] and query[1] if query[1] exists
+
+    if query[0]=='1':
+        string = listOfStrings[-1]      # string equals to its last operated state
+        string += query[1]              # character(s) append to string
+        listOfStrings.append(string)    # operated string append to list
+    elif query[0]=='2':
+        string = listOfStrings[-1]      # string equals to its last operated state
+        string = list(string)           # convert into list of characters
+        for i in range(int(query[1])):
+            string.pop()                # pop query[1] number of times
+        string = ''.join(string)        # convert list of characters back to string
+        listOfStrings.append(string)    # operated string append to list
+    elif query[0] == '3':
+        ans = listOfStrings[-1]         # string equals to its last operated state
+        print(ans[int(query[1])-1])     # print the k'th character, index starts at 0, so needs to minus 1
+    elif query[0] == '4':
+        listOfStrings.pop()             # pop the last element of the list of operated string
