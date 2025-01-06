@@ -1,0 +1,14 @@
+def getWays(n, c):
+    # Write your code here
+    # a list to store the number of ways to get each value from 0 to n
+    ways = [0] * (n + 1)
+    # only one way to make 0: use no coins
+    ways[0] = 1
+    # loop over each coin denomination
+    for i in c:
+        # For each possible total from i to n
+        for j in range(i , n + 1):
+            # update the ways[j] by adding the number of ways we can make (j - coin)
+            ways[j] += ways[j - i]
+    # return the number of ways to make change for n is in ways[n]
+    return ways[n]
