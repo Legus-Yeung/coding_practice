@@ -1,0 +1,6 @@
+def chiefHopper(arr):
+    # Write your code here
+    energy = 0
+    for height in reversed(arr):                    # reverse the array, start from the end
+        energy = math.ceil((energy + height) / 2)   # minimum initial energy before each building
+    return energy
