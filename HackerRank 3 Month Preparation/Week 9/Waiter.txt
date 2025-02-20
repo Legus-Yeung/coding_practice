@@ -1,0 +1,38 @@
+def get_primes(limit):
+    """Generate the first `limit` prime numbers."""
+    primes = []
+    num = 2
+    while len(primes) < limit:
+        # Check if `num` is prime by ensuring it is not divisible by any previous primes
+        is_prime = all(num % p != 0 for p in primes)
+        if is_prime:
+            primes.append(num)
+        num += 1
+    return primes
+
+def waiter(number, q):
+    """Simulate the waiter's plate sorting process based on prime number divisibility."""
+    primes = get_primes(q)  # Get the first `q` prime numbers
+    answer = []  # This will store the final sorted plates
+    
+    for i in range(q):
+        A_next = []  # Stack to hold numbers not divisible by the current prime
+        B = []  # Stack to hold numbers divisible by the current prime
+        prime = primes[i]  # Get the current prime number
+        
+        # Process each plate from the original stack
+        while number:
+            plate = number.pop()  # Remove the top plate from the stack
+            if plate % prime == 0:
+                B.append(plate)  # Add divisible plates to B stack
+            else:
+                A_next.append(plate)  # Add non-divisible plates to A_next stack
+        
+        # Add the plates from B to the final answer (top to bottom order)
+        answer.extend(reversed(B))
+        # Update number stack with remaining plates for next iteration
+        number = A_next
+    
+    # After all iterations, add the remaining plates to answer (top to bottom order)
+    answer.extend(reversed(number))
+    return answer
