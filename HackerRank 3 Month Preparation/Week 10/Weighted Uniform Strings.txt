@@ -1,0 +1,20 @@
+def weightedUniformStrings(s, queries):
+    # Write your code here
+    # The only difficult part for me is understanding uniform substrings mean only single repeated
+    # character(s) are allowed
+    weights = set()     # Set of weights achievable by the given string
+    prev_char = ''
+    current_weight = 0
+    
+    for char in s:
+        weight = ord(char) - ord('a') + 1  # Get weight of character
+        
+        if char == prev_char:
+            current_weight += weight  # Increase weight for uniform substring
+        else:
+            current_weight = weight  # Reset weight for new character
+        
+        weights.add(current_weight)
+        prev_char = char
+    
+    return ["Yes" if q in weights else "No" for q in queries]
